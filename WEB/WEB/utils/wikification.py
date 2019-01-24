@@ -11,7 +11,7 @@ def add_link(text):
     for start, str_len, wiki_page in response.json():
         result += text[start_idx:start]
         page = (
-                   """<a target="_blank" href="%s" title="%s" data-toggle="popover" data-content="test content">%s</a>""") % (
+                   """<a target="_blank" href="%s" title="%s" data-toggle="popover" data-trigger="hover" data-content="test content">%s</a>""") % (
                wiki_url_pre + wiki_page, wiki_page, text[start: start + str_len])
         result += page
 
