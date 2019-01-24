@@ -26,6 +26,9 @@
             font-size: 18px;
             margin: 30px 0;
         }
+        p>a {
+            font-size: 18px;
+        }
         .date {
             color: gray;
             font-weight: bold;
@@ -248,6 +251,7 @@
                     <a onclick="labelWord('A')" id="wordLevelA" class="btn btn-primary" data-check="false">level A</a>
                     <a onclick="labelWord('B')" id="wordLevelB" class="btn btn-primary" data-check="false">level B</a>
                     <a onclick="labelWord('C')" id="wordLevelC" class="btn btn-primary" data-check="false">level C</a>
+                    <a onclick="addWikiLink()" id="wikilink-btn" class="btn btn-primary" data-check="false">wiki</a>
                 </div>
                 <div class="btn-group" style="float: right;">
                     <a id="increase-font" type="button" class="btn btn-default" href="#"> A+ </a>
@@ -275,6 +279,18 @@
                             {% elif type == 'h3' %}
                                 <h3>{{c[1]|safe}}</h3> 
                             {% endif %} 
+                        {% endfor %}
+                    </div>
+                    <div id="wiki-link-article" style="display:None">
+                        {% for c in wiki_link_content %}
+                            {% set type = c[0] %}
+                            {% if type == 'p' %}
+                                <p>{{c[1]|safe}}</p>
+                            {% elif type == 'h2' %}
+                                <h2>{{c[1]|safe}}</h2>
+                            {% elif type == 'h3' %}
+                                <h3>{{c[1]|safe}}</h3>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>
@@ -414,6 +430,7 @@
         
         
         function labelWord(obj) {
+            document.getElementById("text-article").setAttribute('style', "display:inherit");
             var levels = ["A", "B", "C"];
             for (var j in levels) {
                 if (levels[j] == obj) {
@@ -435,7 +452,15 @@
                     }
                 }
             }
+            document.getElementById("wiki-link-article").setAttribute('style', "display:None");
         }
+
+        function addWikiLink(){
+            document.getElementById("wiki-link-article").setAttribute('style', "display:inherit");
+            document.getElementById("text-article").setAttribute('style', "display:None");
+        }
+
+
         function showHide(obj) {
             if(document.getElementById('level1item'+obj).style.display == 'none'){
               document.getElementById('level1item'+obj).style.display = 'block';
@@ -449,13 +474,15 @@
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }
-        
+
         $(document).ready(function() {
             $("#text-article>p span").click(function() {
-                $("#text-article>p span").removeClass('active')
-                $(this).addClass('active')
-            });               
-       });
+                $("#text-article>p span").removeClass('active');
+
+                $(this).addClass('active');
+            });
+            $('[data-toggle="popover"]').popover();
+        });
         var test = document.getElementById('text-article');
         
         test.addEventListener("click", whatClicked, false);
@@ -463,6 +490,8 @@
         function quizGeneration(){
             window.open ('/index2','_self',false)
         }
+
+
         
     </script>
 </body>
