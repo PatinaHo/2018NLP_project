@@ -9,6 +9,7 @@ data_pwd = './utils/data/levelWord/'
 A_word = set(open(data_pwd + 'A_level_word.txt', 'r').readlines()[0].split())
 B_word = set(open(data_pwd + 'B_level_word.txt', 'r').readlines()[0].split())
 C_word = set(open(data_pwd + 'C_level_word.txt', 'r').readlines()[0].split())
+# T_word = set(open(data_pwd + 'toeic_level_word.txt', 'r').readlines()[0].split())
 
 def wordnet(word_, pos, posSet):
     target = set()
