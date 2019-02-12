@@ -251,7 +251,7 @@
                     <a onclick="labelWord('A')" id="wordLevelA" class="btn btn-primary" data-check="false">level A</a>
                     <a onclick="labelWord('B')" id="wordLevelB" class="btn btn-primary" data-check="false">level B</a>
                     <a onclick="labelWord('C')" id="wordLevelC" class="btn btn-primary" data-check="false">level C</a>
-                    <a onclick="labelWord('T')" id="wordLevelT" class="btn btn-primary" data-check="false">Toeic</a>
+                    <!-- <a onclick="labelWord('T')" id="wordLevelT" class="btn btn-primary" data-check="false">Toeic</a> -->
                     <a onclick="addWikiLink()" id="wikilink-btn" class="btn btn-primary" data-check="false">wiki</a>
                 </div>
                 <div class="btn-group" style="float: right;">
@@ -432,7 +432,8 @@
         
         function labelWord(obj) {
             document.getElementById("text-article").setAttribute('style', "display:inherit");
-            var levels = ["A", "B", "C", "T"];
+            // var levels = ["A", "B", "C", "T"];
+            var levels = ["A", "B", "C"];
             for (var j in levels) {
                 if (levels[j] == obj) {
                     document.getElementById("wordLevel"+levels[j]).setAttribute('data-check', "true");

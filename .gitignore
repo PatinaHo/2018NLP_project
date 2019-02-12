@@ -10,3 +10,4 @@ WEB/WEB/utils/*.txt
 WEB/WEB/utils/data/
 *.pyc
 .myenv/
+linggle-booster-env/
