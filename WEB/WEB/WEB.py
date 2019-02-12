@@ -6,15 +6,15 @@ import requests
 from collections import defaultdict
 import json
 
-from utils.extract import *
-from utils.create_pdf import *
+from .utils.extract import *
+from .utils.create_pdf import *
 from readability import Document
 
-from utils.create_pdf.create_article import *
-from utils.GenerateMCQ import *  # import quiz generation
+from .utils.create_pdf.create_article import *
+from .utils.GenerateMCQ import *  # import quiz generation
 
 import youtube_dl
-from utils.wikification import *
+from .utils.wikification import *
 
 dictWord = eval(open('utils/data/autoFindPattern/GPs.txt', 'r').read())
 phraseV = eval(open('utils/data/autoFindPattern/phrase.txt', 'r').read())
